@@ -1,4 +1,5 @@
 import { useState } from "react"
+import styles from './Wallet.module.css'
 
 export const Wallet = () => {
   const [buttonText, setButtonText] = useState('Connect Wallet')
@@ -9,6 +10,7 @@ export const Wallet = () => {
       // Metamask installed
       window.ethereum.request({method: 'eth_requestAccounts'})
       .then(result => {
+        setButtonText("Wallet Connected =>")
         setAccountInfo(result[0])
       })
       .catch(error => {
@@ -16,11 +18,11 @@ export const Wallet = () => {
       })
     } else {
       // Metamask is not installed
-      setButtonText("No tienes acceso a MetaMask")
+      setButtonText("You don't have MetaMask")
     }
   }
 
   return (
-    <button onClick={handleWalletConnection}>{buttonText} {accountInfo}</button>
+    <button className={styles.btn} onClick={handleWalletConnection}>{buttonText} {accountInfo}</button>
   )
 }

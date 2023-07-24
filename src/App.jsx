@@ -4,7 +4,9 @@ import { Wallet } from './components/Wallet/Wallet'
 function App() {
 
   return (
-    <Wallet/>
+    <div className='divWallet'>
+      <Wallet/>
+    </div>
   )
 }
 
